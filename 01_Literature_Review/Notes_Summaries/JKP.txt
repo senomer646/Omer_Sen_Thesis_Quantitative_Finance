@@ -1,0 +1,60 @@
+Research Motivation:
+The paper investigates whether finance faces a replication crisis. Prior literature argues that the majority of discovered factors (stock-level characteristics predicting returns) fail to replicate due to internal validity problems (e.g., errors in studies) or external validity issues (e.g., p-hacking and multiple testing).
+
+Research Objectives:
+The authors aim to:
+
+Test if previously discovered factors replicate in an extensive and robust framework.
+
+Address the "factor zoo" critique by clustering hundreds of factors into economically meaningful themes.
+
+Develop a Bayesian model for factor replication, explicitly addressing multiple-testing concerns and improving the reliability of factor performance inference.
+
+Methodology:
+1. Factor Data:
+They collected an extensive dataset of 153 stock-level factors across 93 countries.
+
+Factors were grouped into 13 economic themes, including Momentum, Value, Profitability, Quality, Investment, and more.
+
+2. Bayesian Hierarchical Modeling:
+They employed a hierarchical Bayesian model for the joint evaluation of all factors simultaneously. Key features of their Bayesian model include:
+
+Hierarchical Structure: Factors are grouped into economically interpretable themes (clusters). Each factor within a theme shares common statistical properties, allowing for "partial pooling" of information.
+
+Bayesian Multiple Testing (BMT): They use Bayesian modeling as a built-in solution to multiple testing problems:
+
+A prior belief that all factor alphas (abnormal returns after controlling for risk) are initially zero.
+
+Posterior distributions of alphas shrink towards zero (conservative), controlling false discoveries without losing statistical power.
+
+Factors within the same theme share statistical strength. A factor’s posterior alpha is informed not only by its performance but also by related factors within its theme.
+
+Empirical Bayes Estimation: They estimate hyperparameters (like theme-level variance) using empirical Bayes, learning these parameters from the data rather than arbitrarily assigning them.
+
+Findings:
+Strong Replicability: Contrary to prior skepticism, the authors show robust replication results. About 82.4% of factors replicate once considered through their Bayesian framework.
+
+External Validity: Factors hold up strongly when tested globally, suggesting factor robustness across various markets.
+
+Factor Clustering: The 153 factors cluster naturally into 13 economically meaningful themes, substantially reducing complexity from a "factor zoo."
+
+Economic Significance: Bayesian-selected factors not only replicate statistically but are also economically meaningful, generating superior out-of-sample returns compared to frequentist multiple-testing corrections.
+
+Conclusions about the Replication Crisis: They argue there's no replication crisis when factor analysis is grounded in economic theory and Bayesian inference, as opposed to naïve frequentist methods.
+
+Their Bayesian Modeling vs. My Thesis:
+What Jensen et al. do:
+
+They build a hierarchical Bayesian model to simultaneously test many factors across different themes, explicitly managing multiple-testing issues with a Bayesian hierarchical prior.
+
+Their Bayesian method is primarily about evaluating factor validity and replicability. They specifically measure whether previously published factors hold out-of-sample when rigorously tested using a Bayesian framework.
+
+What I am trying to achieve:
+
+I'm building a Bayesian model specifically for predicting monthly returns (forecast accuracy) and simultaneously selecting features (factors). My model focuses explicitly on predictive power for returns and economic interpretability of predictors.
+
+I'm using spike-and-slab priors at an individual factor level for automatic feature selection within a hierarchical structure, intending to discover predictive accuracy and economic significance directly.
+
+Simply put: My Bayesian hierarchical model draws inspiration from Jensen, Kelly, and Pedersen (2023), 
+particularly their thematic grouping of factors and hierarchical priors. However, I'm extending their method by explicitly employing 
+spike-and-slab priors for predictive feature selection and forecasting performance, rather than replication alone.

@@ -1,0 +1,22 @@
+# System files (like the desktop.ini you had in your PDFs folder)
+desktop.ini
+Desktop.ini
+*.DS_Store
+
+# Specific raw data file to ignore
+# Use forward slashes for paths in .gitignore, even on Windows, for better cross-platform compatibility.
+02_Data_Collection_and_Preperation/Raw_Data/stock-level factors.csv
+
+# Specific text file to ignore (assuming it's in the root directory)
+text.txt
+
+# You might also want to ignore all contents of Raw_Data if it's all large datasets
+# For example, to ignore all CSV files in that specific Raw_Data folder:
+# 02_Data_Collection_and_Preperation/Raw_Data/*.csv
+
+# If you have other large data folders or temporary build folders, add them here too.
+# Example:
+# /02_Data_Collection_and_Preperation/Raw_Data/
+# /some_other_large_data_folder/
+# *.log
+# *.tmp 

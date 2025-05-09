@@ -1,0 +1,7 @@
+I have extracted the monthly returns of the SP 500 constituents from 1965 to 2024 from the CRSP database.
+
+I have also extracted the 153 characteristics of all US stocks from 1965 to 2024 from the WRDS database.
+
+I will merge the two datasets on permno and date, to create a dataset with the returns of the SP 500 constituents and their characteristics.
+
+
