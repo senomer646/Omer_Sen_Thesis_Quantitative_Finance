@@ -1,0 +1,93 @@
+Research Motivation:
+The paper addresses the challenge of modeling the cross-section of expected stock returns using machine learning (ML) techniques. Traditional linear factor models (e.g., Fama-French) face limitations in capturing nonlinearities, complex interactions, and high-dimensional feature spaces. The authors investigate how supervised ML models can improve return prediction and variable selection in a high-dimensional empirical asset pricing context.
+
+Research Objectives:
+The authors aim to:
+
+Evaluate various machine learning algorithms (LASSO, Ridge, Elastic Net, Tree-based models, Neural Nets) in predicting stock returns.
+
+Compare these models against traditional linear models using the same high-dimensional dataset.
+
+Understand how ML models handle overfitting, variable importance, and robustness in the context of empirical asset pricing.
+
+Methodology:
+
+Data:
+
+Stock-level return data is paired with a large set of firm characteristics.
+
+Predictive regressions are run to forecast one-month-ahead returns.
+
+Features are standardized, and predictive performance is evaluated using rolling windows and walk-forward cross-validation.
+
+Models Implemented:
+
+Penalized Linear Models: LASSO, Ridge, and Elastic Net are used for shrinkage and variable selection. These models assume a linear structure but enforce sparsity (LASSO) or weight regularization.
+
+Tree-Based Models: Decision Trees, Random Forests, and Boosted Trees are employed to capture nonlinearities and interactions without needing to pre-specify them.
+
+Neural Networks: Used to capture complex interactions but with less interpretability.
+
+Evaluation Criteria:
+
+Out-of-sample R2
+
+Mean Squared Error (MSE)
+
+Variable importance and factor interpretability
+
+Sharpe ratios and profitability of portfolio strategies based on predicted returns
+
+Findings:
+
+LASSO performs well in sparse, high-dimensional settings by selecting economically meaningful predictors.
+
+Tree-based models outperform linear models when interactions and nonlinearities are present in the data.
+
+Predictive R2 and Sharpe ratios improve across most ML models compared to traditional linear benchmarks.
+
+ML models identify stable and interpretable signals (e.g., momentum, value, profitability) even in complex settings.
+
+Regularization and proper cross-validation are essential to avoid overfitting, especially in the presence of noise.
+
+Contribution to My Thesis:
+
+What the authors do:
+
+Provide a benchmark for applying interpretable machine learning methods (LASSO, Decision Trees) to the return prediction problem.
+
+Emphasize robust model validation using cross-validation and rolling forecasts.
+
+Show that ML models can uncover both known and novel predictors while maintaining economic interpretability.
+
+What I am doing:
+
+Using this paper to inform the design and tuning of my benchmark ML models (LASSO and Decision Tree) that I will compare against my Bayesian spike-and-slab model.
+
+I will adopt their data-handling strategies (e.g., lagging features, normalization, walk-forward evaluation) and possibly mirror their portfolio formation techniques to compare economic significance.
+
+My extension lies in integrating a Bayesian framework with spike-and-slab priors for feature selection, which allows me to produce interpretable posterior distributions and probabilistic predictions—something this paper’s frequentist models cannot do.
+
+
+Factor Standardization:
+
+The authors scale all factors to ensure their monthly idiosyncratic volatility is 10% / √12 (i.e., 10% annualized).
+This scaling is done to achieve cross-sectional stationarity and to establish a prior that factors are comparable in terms of their information ratio.
+To construct a plug-in estimate of the factor residual return covariance matrix, they scale each factor so that its monthly idiosyncratic volatility is 10%/ √ 12 (10% annualized).
+Missing Values:
+
+For a factor return to be considered nonmissing, the study requires that it have at least five stocks in each of the long and short legs of the factor portfolio.
+Additionally, they mandate a minimum of 60 nonmissing monthly observations for each country-specific factor to be included in their sample.
+When aggregating factors across countries (for developed and emerging market factors), they require that at least three countries have nonmissing factor returns.
+The paper mentions an unbalanced panel due to different factors coming online at different times. To address this in the estimation of the factor residual return covariance matrix, they use a bootstrap methodology, resampling rows of the unbalanced factor return data set.
+
+Empirical Asset Pricing via Machine Learning (Gu, Kelly, and Xiu, 2020)
+Factor Standardization (Predictor Transformation):
+
+The authors cross-sectionally rank all stock characteristics period-by-period and map these ranks into the [-1,1] interval. This is done following the methodology of Kelly, Pruitt, and Su (2019) and Freyberger, Neuhierl, and Weber (2020).
+For neural networks, "Batch normalization" is used, which involves cross-sectionally demeaning and variance standardizing the inputs for each hidden unit in each training step to control the variability of predictors.
+
+Missing Values:
+
+The paper states that for missing characteristics, they replace these with the cross-sectional median at each month for each stock, respectively.
+In the general model description, it's mentioned that for ease of presentation, a balanced panel of stocks is assumed, and the discussion on missing data is deferred to Section 2.1. Section 2.1 details that missing characteristics are replaced with the cross-sectional median.

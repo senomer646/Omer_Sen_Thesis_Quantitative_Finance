@@ -19,4 +19,19 @@ text.txt
 # /02_Data_Collection_and_Preperation/Raw_Data/
 # /some_other_large_data_folder/
 # *.log
-# *.tmp 
+# *.tmp
+
+# Environment & Editor Files
+.vscode/
+.virtual_documents/
+.ipynb_checkpoints/
+__pycache__/
+
+# Large Data Files
+02_Data_Collection_and_Preperation/Raw_Data/stock-level factors.csv
+02_Data_Collection_and_Preperation/Proccessed_Data/*.parquet
+04_Analysis_and_Results/Scripts_Code/trace_stage3_optimized.nc
+04_Analysis_and_Results/Scripts_Code/trace_stage3_semi_hierarchical.nc
+
+# HTML output files from notebooks
+*.html 
